@@ -1,2 +1,4 @@
-# web-check
-A kinda Web Assign Alternative
+# Web Quest
+A new powerful tool to help study practice problems and assign web based homeworks.
+
+**More functionality to come in time**
