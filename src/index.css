@@ -3,13 +3,23 @@ body {
   background-color: rgb(50, 50, 50);
   color: white;
   font-family: monospace;
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 0;
+  grid-row-gap: 0;
 }
 
-header {
+#banner {
   display: flexbox;
   background-color: rgb(50, 50, 50);
 }
 
 .title {
   text-align: left;
+}
+
+.tempP {
+  grid-area: 2 / 2 / 6 / 5;
 }

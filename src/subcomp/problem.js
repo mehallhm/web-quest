@@ -3,7 +3,7 @@ import './problem.css';
 function Problem(num) {
   return (
     <div className="Problem">
-      <header>
+      <header id="indivHead">
         <button id="details">Details</button>
       </header>
     </div>
