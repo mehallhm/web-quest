@@ -1,5 +1,5 @@
-import './App.css';
-import Problem from './subcomp/problem';
+import "./App.css";
+import Problem from "./subcomp/problem";
 
 function App() {
   return (
@@ -8,9 +8,14 @@ function App() {
         <h1 className="ml-5 text-xl font-bold">WebQuest</h1>
       </header>
 
-      <div className="grid grid-cols-9 grid-rows-1 mt-20">
-        <div className="col-start-2 col-span-7">
-          <Problem/>
+      <div className="mt-20 grid grid-cols-9 grid-rows-1">
+        <div className="col-span-7 col-start-2">
+          <Problem
+            num={1}
+            qcontent={
+              "This is an example question. Something would go here. Something very important. Something to make an individual question reality..."
+            }
+          />
         </div>
       </div>
     </div>
