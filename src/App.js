@@ -4,14 +4,14 @@ import Problem from './subcomp/problem';
 function App() {
   return (
     <div className="App">
-      <header id="banner">
-        <div class="title">
-          <h1>WebQuest</h1>
-        </div>
+      <header className="bg-teal-400 py-4">
+        <h1 className="ml-5 text-xl font-bold">WebQuest</h1>
       </header>
 
-      <div class="tempP">
-        <Problem/>
+      <div className="grid grid-cols-9 grid-rows-1 mt-20">
+        <div className="col-start-2 col-span-7">
+          <Problem/>
+        </div>
       </div>
     </div>
   );

@@ -3,27 +3,7 @@
 @tailwind utilities;
 
 body {
-  margin: 20px;
   background-color: rgb(50, 50, 50);
   color: white;
   font-family: monospace;
-
-  display: grid;
-  grid-template-columns: 90px auto 90px;
-}
-
-#banner {
-  display: flexbox;
-  background-color: rgb(50, 50, 50);
-}
-
-.title {
-  text-align: left;
-}
-
-.tempP {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 1;
-  grid-row-end: 2;
 }
