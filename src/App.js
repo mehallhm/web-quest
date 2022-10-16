@@ -1,13 +1,12 @@
 import "./App.css";
 import Problem from "./subcomp/problem";
 import React from "react";
+import Navbar from "./subcomp/navbar";
 
 function App() {
   return (
     <div className="App">
-      <header className="bg-teal-400 py-4">
-        <h1 className="ml-5 text-xl font-bold">WebQuest</h1>
-      </header>
+      <Navbar />
 
       <div className="mt-20 grid grid-cols-9 grid-rows-1">
         <div className="col-span-7 col-start-2">
