@@ -1,7 +1,7 @@
-import "./App.css";
-import Problem from "./subcomp/problem";
+import "../App.css";
+import Problem from "../components/problem";
 import React from "react";
-import Navbar from "./subcomp/navbar";
+import Navbar from "../components/navbar";
 
 function SetView() {
   return (

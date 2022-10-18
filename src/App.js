@@ -1,8 +1,6 @@
 import "./App.css";
-import Problem from "./subcomp/problem";
 import React from "react";
-import Navbar from "./subcomp/navbar";
-import SetView from "./SetView";
+import SetView from "./views/SetView";
 
 function App() {
   return (
