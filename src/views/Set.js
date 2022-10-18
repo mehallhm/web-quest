@@ -3,9 +3,9 @@ import Problem from "../components/problem";
 import React from "react";
 import Navbar from "../components/navbar";
 
-function SetView() {
+function Set() {
   return (
-    <div className="SetView">
+    <div className="Set">
       <Navbar />
 
       <div className="mt-20 grid grid-cols-9 grid-rows-1">
@@ -22,4 +22,4 @@ function SetView() {
   );
 }
 
-export default SetView;
+export default Set;

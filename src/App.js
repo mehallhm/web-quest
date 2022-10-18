@@ -1,11 +1,11 @@
 import "./App.css";
 import React from "react";
-import SetView from "./views/SetView";
+import Set from "./views/Set";
 
 function App() {
   return (
     <div className="App">
-      <SetView />
+      <Set />
     </div>
   );
 }
