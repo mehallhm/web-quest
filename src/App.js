@@ -1,10 +1,6 @@
-import "./App.css";
-import Problem from "./subcomp/problem";
+import Set from "./views/Set";
 import React, { useEffect, useState } from "react";
-
 import { creds } from "../creds";
-
-
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 
@@ -60,20 +56,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="bg-teal-400 py-4">
-        <h1 className="ml-5 text-xl font-bold">WebQuest</h1>
-      </header>
-
-      <div className="mt-20 grid grid-cols-9 grid-rows-1">
-        <div className="col-span-7 col-start-2">
-          <Problem
-            num={0}
-            qcontent={
-             data
-            }
-          />
-        </div>
-      </div>
+      <Set />
     </div>
   );
 }
