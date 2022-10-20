@@ -8,7 +8,6 @@ import {
   where,
 } from "firebase/firestore";
 import "../index.css";
-import firebaseConfig from "../creds.js";
 import Problem from "./problem";
 
 // Initialize Firebase
@@ -16,13 +15,13 @@ import Problem from "./problem";
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const q = query(collection(db, "questions"), where("units", "==", "m/s"));
+const q = query(collection(db, "questions"), where("tag", "==", "physics"));
 
 const getData = async () => {
-  let result;
+  let result = [];
   let querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
-    result = doc.data().question;
+    result.push(doc.data());
   });
   return result;
 };
@@ -41,14 +40,19 @@ function ProblemSet() {
     return <div>Loading...</div>;
   }
 
+  const problems = data.map((data, i) => {
+    return <Problem num={i} qcontent={data.question} />;
+  });
+
   return (
     <div>
-      <Problem num={0} qcontent={data} />
-      <Problem num={0} qcontent={data} />
-      <Problem num={0} qcontent={data} />
-      <Problem num={0} qcontent={data} />
-      <Problem num={0} qcontent={data} />
-      <Problem num={0} qcontent={data} />
+      {problems}
+      {/* <Problem num={0} qcontent={data[0].question}/> */}
+      {/* <Problem num={0} qcontent={data[1].question}/> */}
+      {/* <Problem num={0} qcontent={data}/>
+	  <Problem num={0} qcontent={data}/>
+	  <Problem num={0} qcontent={data}/>
+	  <Problem num={0} qcontent={data}/> */}
     </div>
   );
 }
