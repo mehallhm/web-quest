@@ -1,10 +1,16 @@
 import React from "react";
 import "../index.css";
 
-function Problem({ num, qcontent }) {
+function Problem({ num, qcontent, astat = null }) {
   return (
     <div className="Problem bg-slate-800">
-      <header className="flex items-center justify-between bg-teal-500">
+      <header
+        className={`flex items-center justify-between bg-teal-500 ${
+          astat == null
+            ? "bg-teal-500"
+            : `${astat ? "bg-green-500" : "bg-rose-500"}`
+        }`}
+      >
         <button className="my-3 ml-5 rounded bg-indigo-600 py-2 px-5 hover:bg-indigo-500">
           Details
         </button>
