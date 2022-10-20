@@ -8,6 +8,7 @@ import {
   where,
 } from "firebase/firestore";
 import "../index.css";
+import firebaseConfig from "../creds.js";
 import Problem from "./problem";
 
 // Initialize Firebase
