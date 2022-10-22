@@ -1,7 +1,13 @@
 import React from "react";
 import "../index.css";
 
-function Problem({ num, qcontent, astat = null }) {
+function Problem({ num, qcontent, ans, astat = null }) {
+  // Submit handler
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert("TESTING");
+  };
+
   return (
     <div className="Problem bg-slate-800">
       <header
@@ -19,11 +25,16 @@ function Problem({ num, qcontent, astat = null }) {
       <div className="p-5">
         <p>{qcontent}</p>
         <br />
-        <input className="bg-gray-900 px-1 py-1"></input>
-        <br />
-        <button className="mt-9 rounded bg-indigo-600 py-1 px-3 text-xs hover:bg-indigo-500">
-          Submit
-        </button>
+        <form onSubmit={handleSubmit}>
+          <input className="bg-gray-900 px-1 py-1"></input>
+          <br />
+          <input
+            type="submit"
+            className="mt-9 rounded bg-indigo-600 py-1 px-3 text-xs hover:bg-indigo-500"
+          >
+            Submit
+          </input>
+        </form>
       </div>
     </div>
   );
