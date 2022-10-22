@@ -26,14 +26,14 @@ function Problem({ num, qcontent, ans, astat = null }) {
         <p>{qcontent}</p>
         <br />
         <form onSubmit={handleSubmit}>
-          <input className="bg-gray-900 px-1 py-1"></input>
+          <input name="answer" className="bg-gray-900 px-1 py-1"></input>
           <br />
-          <input
+          <button
             type="submit"
             className="mt-9 rounded bg-indigo-600 py-1 px-3 text-xs hover:bg-indigo-500"
           >
             Submit
-          </input>
+          </button>
         </form>
       </div>
     </div>
