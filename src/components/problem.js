@@ -16,7 +16,7 @@ function Problem({ num, qcontent, ans, units /*, bstat = null*/ }) {
   // Submit handler
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (Object.values(formData)[0] == String(ans)) {
+    if (Object.values(formData)[0] === String(ans)) {
       setbStat(true);
     } else {
       setbStat(false);
@@ -31,7 +31,7 @@ function Problem({ num, qcontent, ans, units /*, bstat = null*/ }) {
   };
 
   return (
-    <div className="Problem bg-slate-800">
+    <div className="Problem bg-slate-800 mt-10">
       <header
         className={`flex items-center justify-between bg-teal-500 ${
           bStat == null
@@ -52,14 +52,16 @@ function Problem({ num, qcontent, ans, units /*, bstat = null*/ }) {
             name="answer"
             onChange={handleChange}
             className="bg-gray-900 px-1 py-1"
+            autoComplete="off"
+            disabled={bStat}
           ></input>
           <br />
-          <button
+          {!bStat && <button
             type="submit"
-            className="mt-9 rounded bg-indigo-600 py-1 px-3 text-xs hover:bg-indigo-500"
-          >
-            Submit
-          </button>
+            className="mt-9 rounded bg-indigo-600 py-1 px-3 text-xs hover:bg-indigo-500">
+              Submit
+            </button>
+          }
         </form>
       </div>
     </div>

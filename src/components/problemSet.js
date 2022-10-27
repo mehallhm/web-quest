@@ -18,7 +18,6 @@ const db = getFirestore(app);
 const q = query(collection(db, "questions"), where("tag", "==", "physics"));
 
 const getData = async () => {
-  return;
   let result = [];
   let querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
@@ -41,7 +40,7 @@ function ProblemSet() {
   }
 
   const problems = data.map((data, i) => {
-    return <Problem num={i} qcontent={data.question} ans={data.answer} units={data.units}/>;
+    return <Problem num={i} qcontent={data.question} ans={data.answer} units={data.units} key={i}/>;
   });
 
   return (
