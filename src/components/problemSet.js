@@ -9,9 +9,8 @@ import {
 } from "firebase/firestore";
 import "../index.css";
 import firebaseConfig from "../creds.js";
+import QuestionLoader from './questionLoader';
 import Problem from "./problem";
-
-// Initialize Firebase
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -19,6 +18,7 @@ const db = getFirestore(app);
 const q = query(collection(db, "questions"), where("tag", "==", "physics"));
 
 const getData = async () => {
+  return;
   let result = [];
   let querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
@@ -26,8 +26,6 @@ const getData = async () => {
   });
   return result;
 };
-
-// Initialize Firebase
 
 function ProblemSet() {
   const [data, setData] = useState(null);
@@ -38,22 +36,17 @@ function ProblemSet() {
   }, []);
 
   if (data == null) {
-    return <div>Loading...</div>;
+    // return <div>Loading...</div>;
+	return <QuestionLoader />
   }
 
   const problems = data.map((data, i) => {
-    return <Problem num={i} ans={76} qcontent={data.question} />;
+    return <Problem num={i} qcontent={data.question} ans={data.answer} units={data.units}/>;
   });
 
   return (
     <div>
       {problems}
-      {/* <Problem num={0} qcontent={data[0].question}/> */}
-      {/* <Problem num={0} qcontent={data[1].question}/> */}
-      {/* <Problem num={0} qcontent={data}/>
-	  <Problem num={0} qcontent={data}/>
-	  <Problem num={0} qcontent={data}/>
-	  <Problem num={0} qcontent={data}/> */}
     </div>
   );
 }

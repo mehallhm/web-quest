@@ -9,7 +9,7 @@ const formReduce = (state, event) => {
   };
 };
 
-function Problem({ num, qcontent, ans /*, bstat = null*/ }) {
+function Problem({ num, qcontent, ans, units /*, bstat = null*/ }) {
   const [bStat, setbStat] = useState(null);
   const [formData, setFormData] = useReducer(formReduce, {});
 
