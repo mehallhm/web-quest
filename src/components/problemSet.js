@@ -42,7 +42,7 @@ function ProblemSet() {
   }
 
   const problems = data.map((data, i) => {
-    return <Problem num={i} qcontent={data.question} />;
+    return <Problem num={i} ans={76} qcontent={data.question} />;
   });
 
   return (
