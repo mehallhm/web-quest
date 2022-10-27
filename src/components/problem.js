@@ -1,20 +1,42 @@
-import React from "react";
+import React, { useState, useReducer } from "react";
 import "../index.css";
 
-function Problem({ num, qcontent, ans, astat = null }) {
+// Form handler
+const formReduce = (state, event) => {
+  return {
+    ...state,
+    [event.name]: event.value,
+  };
+};
+
+function Problem({ num, qcontent, ans /*, bstat = null*/ }) {
+  const [bStat, setbStat] = useState(null);
+  const [formData, setFormData] = useReducer(formReduce, {});
+
   // Submit handler
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert("TESTING");
+    if (Object.values(formData)[0] == String(ans)) {
+      setbStat(true);
+    } else {
+      setbStat(false);
+    }
+  };
+
+  const handleChange = (event) => {
+    setFormData({
+      name: event.target.name,
+      value: event.target.value,
+    });
   };
 
   return (
     <div className="Problem bg-slate-800">
       <header
         className={`flex items-center justify-between bg-teal-500 ${
-          astat == null
+          bStat == null
             ? "bg-teal-500"
-            : `${astat ? "bg-green-500" : "bg-rose-500"}`
+            : `${bStat ? "bg-green-500" : "bg-rose-500"}`
         }`}
       >
         <button className="my-3 ml-5 rounded bg-indigo-600 py-2 px-5 hover:bg-indigo-500">
@@ -26,7 +48,11 @@ function Problem({ num, qcontent, ans, astat = null }) {
         <p>{qcontent}</p>
         <br />
         <form onSubmit={handleSubmit}>
-          <input name="answer" className="bg-gray-900 px-1 py-1"></input>
+          <input
+            name="answer"
+            onChange={handleChange}
+            className="bg-gray-900 px-1 py-1"
+          ></input>
           <br />
           <button
             type="submit"
