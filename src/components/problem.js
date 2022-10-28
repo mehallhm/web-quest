@@ -9,7 +9,7 @@ const formReduce = (state, event) => {
   };
 };
 
-function Problem({ num, qcontent, ans, units /*, bstat = null*/ }) {
+function Problem({ num, qcontent, ans, units }) {
   const [bStat, setbStat] = useState(null);
   const [formData, setFormData] = useReducer(formReduce, {});
 
@@ -30,18 +30,21 @@ function Problem({ num, qcontent, ans, units /*, bstat = null*/ }) {
     });
   };
 
+  const cCol = bStat == null ? "teal" : bStat ? "green" : "rose";
+
   return (
-    <div className="Problem bg-slate-800 mt-10">
+    <div className="Problem mt-10 bg-slate-800">
       <header
-        className={`flex items-center justify-between bg-teal-500 ${
-          bStat == null
-            ? "bg-teal-500"
-            : `${bStat ? "bg-green-500" : "bg-rose-500"}`
-        }`}
+        className={`flex items-center justify-between ${"bg-" + cCol + "-500"}`}
       >
-        <button className="my-3 ml-5 rounded bg-indigo-600 py-2 px-5 hover:bg-indigo-500">
-          Details
-        </button>
+        <div className="flex flex-row items-center">
+          <button className="my-3 ml-5 rounded bg-indigo-600 py-2 px-5 hover:bg-indigo-500">
+            Details
+          </button>
+          <h2 className={`ml-5 rounded p-2 font-bold ${"bg-" + cCol + "-600"}`}>
+            7/29
+          </h2>
+        </div>
         <h1 className="font-xl justify-end px-5 text-2xl font-bold">{num}</h1>
       </header>
       <div className="p-5">
@@ -56,12 +59,14 @@ function Problem({ num, qcontent, ans, units /*, bstat = null*/ }) {
             disabled={bStat}
           ></input>
           <br />
-          {!bStat && <button
-            type="submit"
-            className="mt-9 rounded bg-indigo-600 py-1 px-3 text-xs hover:bg-indigo-500">
+          {!bStat && (
+            <button
+              type="submit"
+              className="mt-9 rounded bg-indigo-600 py-1 px-3 text-xs hover:bg-indigo-500"
+            >
               Submit
             </button>
-          }
+          )}
         </form>
       </div>
     </div>
