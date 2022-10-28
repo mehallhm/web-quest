@@ -9,7 +9,7 @@ import {
 } from "firebase/firestore";
 import "../index.css";
 import firebaseConfig from "../creds.js";
-import QuestionLoader from './questionLoader';
+import QuestionLoader from "./questionLoader";
 import Problem from "./problem";
 
 const app = initializeApp(firebaseConfig);
@@ -36,18 +36,22 @@ function ProblemSet() {
 
   if (data == null) {
     // return <div>Loading...</div>;
-	return <QuestionLoader />
+    return <QuestionLoader />;
   }
 
   const problems = data.map((data, i) => {
-    return <Problem num={i} qcontent={data.question} ans={data.answer} units={data.units} key={i}/>;
+    return (
+      <Problem
+        num={i}
+        qcontent={data.question}
+        ans={data.answer}
+        units={data.units}
+        key={i}
+      />
+    );
   });
 
-  return (
-    <div>
-      {problems}
-    </div>
-  );
+  return <div>{problems}</div>;
 }
 
 export default ProblemSet;
