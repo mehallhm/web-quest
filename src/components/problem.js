@@ -35,9 +35,7 @@ function Problem({ num, qcontent, ans, units }) {
   return (
     <div className="Problem mt-10 bg-slate-800">
       <header
-        className={`flex items-center justify-between  ${
-          "bg-" + cCol + "-500"
-        }`}
+        className={`flex items-center justify-between ${"bg-" + cCol + "-500"}`}
       >
         <div className="flex flex-row items-center">
           <button className="my-3 ml-5 rounded bg-indigo-600 py-2 px-5 hover:bg-indigo-500">
