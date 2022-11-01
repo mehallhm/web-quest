@@ -7,8 +7,7 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import "../index.css";
-import firebaseConfig from "../creds.js";
+import firebaseConfig from "../public/creds.js";
 import QuestionLoader from "./questionLoader";
 import Problem from "./problem";
 
@@ -42,7 +41,7 @@ function ProblemSet() {
   const problems = data.map((data, i) => {
     return (
       <Problem
-        num={i}
+        num={i+1}
         qcontent={data.question}
         ans={data.answer}
         units={data.units}

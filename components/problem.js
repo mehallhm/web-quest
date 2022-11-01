@@ -1,5 +1,4 @@
 import React, { useState, useReducer } from "react";
-import "../index.css";
 
 // Form handler
 const formReduce = (state, event) => {
