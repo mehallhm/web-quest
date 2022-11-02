@@ -6,7 +6,7 @@ function Navbar() {
 		<div className="Navbar">
 			<header className="flex items-center justify-between bg-teal-400 py-4">
 				<h1 className="ml-5 text-xl font-bold">
-					Web Based Quiz System
+					Web-Based Quiz System
 				</h1>
 				<div className="mr-5 flex">
 					<Link href="/" className="p-2">
