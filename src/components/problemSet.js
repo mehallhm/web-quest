@@ -47,6 +47,7 @@ function ProblemSet() {
         ans={data.answer}
         units={data.units}
         key={i}
+        obb={data.problems}
       />
     );
   });

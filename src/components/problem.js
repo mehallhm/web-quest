@@ -9,7 +9,7 @@ const formReduce = (state, event) => {
   };
 };
 
-function Problem({ num, qcontent, ans, units }) {
+function Problem({ num, qcontent, ans, obb }) {
   const [bStat, setbStat] = useState(null);
   const [formData, setFormData] = useReducer(formReduce, {});
 
@@ -30,39 +30,60 @@ function Problem({ num, qcontent, ans, units }) {
     });
   };
 
-  const cCol = bStat == null ? "teal" : bStat ? "green" : "rose";
+  // Conditional coloring
+  const pCol =
+    bStat == null ? "bg-teal-500" : bStat ? "bg-green-500" : "bg-rose-500";
+  const sCol =
+    bStat == null ? "bg-teal-600" : bStat ? "bg-green-600" : "bg-rose-600";
+
+  // Generate paragraph & field for each problem part
+  const partSet = obb.map((part) => (
+    <div className="pb-8">
+      <p>{part.question}</p>
+      <br />
+      <div className="flex items-center">
+        <input
+          name="answer"
+          onChange={handleChange}
+          className="bg-gray-900 px-1 py-1"
+          autoComplete="off"
+          disabled={bStat}
+        ></input>
+        <h3 className="pl-3 pb-1">m/s</h3>
+      </div>
+    </div>
+  ));
 
   return (
     <div className="Problem mt-10 bg-slate-800">
-      <header
-        className={`flex items-center justify-between ${"bg-" + cCol + "-500"}`}
-      >
+      <header className={`flex items-center justify-between ${pCol}`}>
+        {/*${"bg-" + cCol + "-600"} -----------------------> ^^^*/}
         <div className="flex flex-row items-center">
           <button className="my-3 ml-5 rounded bg-indigo-600 py-2 px-5 hover:bg-indigo-500">
             Details
           </button>
-          <h2 className={`ml-5 rounded p-2 font-bold ${"bg-" + cCol + "-600"}`}>
-            7/29
-          </h2>
+          <h2 className={`ml-5 rounded p-2 font-bold ${sCol}`}>7/29</h2>
         </div>
         <h1 className="font-xl justify-end px-5 text-2xl font-bold">{num}</h1>
       </header>
-      <div className="p-5">
-        <p>{qcontent}</p>
-        <br />
+
+      <div className="grid-cols-1 p-5">
+        {/* <p>{obb.question}</p>
+        <br /> */}
         <form onSubmit={handleSubmit}>
-          <input
+          {/* <input
             name="answer"
             onChange={handleChange}
             className="bg-gray-900 px-1 py-1"
             autoComplete="off"
             disabled={bStat}
           ></input>
-          <br />
+          <br /> */}
+          {partSet}
           {!bStat && (
             <button
               type="submit"
-              className="mt-9 rounded bg-indigo-600 py-1 px-3 text-xs hover:bg-indigo-500"
+              className="mt-4 rounded bg-indigo-600 py-1 px-3 text-xs hover:bg-indigo-500"
             >
               Submit
             </button>
