@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import "../index.css";
 
-function Problem({ num, qcontent, ans, obb }) {
+function Problem({ num, ans, obb, units }) {
   // Individual part validation
   const [bStat, setbStat] = useState(Array(obb.length).fill(null));
   // Whole problem validation
   const [aStat, setaStat] = useState(false);
-  // const [formData, setFormData] = useReducer(formReduce, {});
+  // Data collected directly from user inputs
   const [formData, setFormData] = useState(Array(obb.length).fill(null));
+  // Earned points
+  const [points, setPoints] = useState(0);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -19,10 +21,10 @@ function Problem({ num, qcontent, ans, obb }) {
       });
       setbStat(newValid);
     }
+    setPoints(bStat.filter((c) => c === true).length);
   };
 
   const handleChange = (event, index) => {
-    console.log("CHANGING LALALALALALALALALALALALALALA");
     const newData = formData.map((c, i) => {
       if (i === index) {
         return event.target.value;
@@ -30,7 +32,6 @@ function Problem({ num, qcontent, ans, obb }) {
         return c;
       }
     });
-    console.log(newData);
     setFormData(newData);
   };
 
@@ -49,24 +50,28 @@ function Problem({ num, qcontent, ans, obb }) {
         <input
           name="answer"
           onChange={(event) => handleChange(event, i)}
-          className="bg-gray-900 px-1 py-1"
+          className={`rounded-md border-4 bg-gray-900 px-1 py-1 outline-none ${
+            bStat[i] ? "border-green-500" : "border-red-500"
+          }`}
           autoComplete="off"
           disabled={bStat[i]}
         ></input>
-        <h3 className="pl-3 pb-1">m/s</h3>
+        <h3 className="pl-3 pb-1">{units[i]}</h3>
       </div>
     </div>
   ));
 
   return (
-    <div className="Problem mt-10 bg-slate-800">
-      <header className={`flex items-center justify-between ${pCol}`}>
+    <div className="Problem mt-10 rounded-b bg-slate-800">
+      <header className={`flex items-center justify-between rounded-t ${pCol}`}>
         {/*${"bg-" + cCol + "-600"} -----------------------> ^^^*/}
         <div className="flex flex-row items-center">
           <button className="my-3 ml-5 rounded bg-indigo-600 py-2 px-5 hover:bg-indigo-500">
             Details
           </button>
-          <h2 className={`ml-5 rounded p-2 font-bold ${sCol}`}>7/29</h2>
+          <h2 className={`ml-5 rounded p-2 font-bold ${sCol}`}>
+            {points} / {obb.length}
+          </h2>
         </div>
         <h1 className="font-xl justify-end px-5 text-2xl font-bold">{num}</h1>
       </header>
