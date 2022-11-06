@@ -22,7 +22,6 @@ function Problem({ num, qcontent, ans, obb }) {
   };
 
   const handleChange = (event, index) => {
-    console.log("CHANGING LALALALALALALALALALALALALALA");
     const newData = formData.map((c, i) => {
       if (i === index) {
         return event.target.value;
@@ -30,7 +29,6 @@ function Problem({ num, qcontent, ans, obb }) {
         return c;
       }
     });
-    console.log(newData);
     setFormData(newData);
   };
 
@@ -49,7 +47,9 @@ function Problem({ num, qcontent, ans, obb }) {
         <input
           name="answer"
           onChange={(event) => handleChange(event, i)}
-          className="bg-gray-900 px-1 py-1"
+          className={`rounded-md border-4 bg-gray-900 px-1 py-1 ${
+            bStat[i] ? "border-green-500" : "border-red-500"
+          }`}
           autoComplete="off"
           disabled={bStat[i]}
         ></input>
