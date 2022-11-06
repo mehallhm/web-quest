@@ -1,35 +1,25 @@
-import React, { useState /*, useReducer*/ } from "react";
+import React, { useState } from "react";
 import "../index.css";
 
-// Form handler
-// const formReduce = (state, event) => {
-//   return {
-//     ...state,
-//     [event.name]: event.value,
-//   };
-// };
-
 function Problem({ num, qcontent, ans, obb }) {
-  const [bStat, setbStat] = useState(null);
+  // Individual part validation
+  const [bStat, setbStat] = useState(Array(obb.length).fill(null));
+  // Whole problem validation
+  const [aStat, setaStat] = useState(false);
   // const [formData, setFormData] = useReducer(formReduce, {});
   const [formData, setFormData] = useState(Array(obb.length).fill(null));
 
-  // Submit handler UNCOMMENT THIS -------<>--------
   const handleSubmit = (event) => {
     event.preventDefault();
     if (formData.toString() === ans.toString()) {
-      setbStat(true);
+      setaStat(true);
     } else {
-      setbStat(false);
+      const newValid = formData.map((datum, i) => {
+        return datum === ans[i];
+      });
+      setbStat(newValid);
     }
   };
-
-  // const handleChange = (event) => {
-  //   setFormData({
-  //     name: event.target.name,
-  //     value: event.target.value,
-  //   });
-  // };
 
   const handleChange = (event, index) => {
     console.log("CHANGING LALALALALALALALALALALALALALA");
@@ -46,9 +36,9 @@ function Problem({ num, qcontent, ans, obb }) {
 
   // Conditional coloring
   const pCol =
-    bStat == null ? "bg-teal-500" : bStat ? "bg-green-500" : "bg-rose-500";
+    aStat == null ? "bg-teal-500" : aStat ? "bg-green-500" : "bg-rose-500";
   const sCol =
-    bStat == null ? "bg-teal-600" : bStat ? "bg-green-600" : "bg-rose-600";
+    aStat == null ? "bg-teal-600" : aStat ? "bg-green-600" : "bg-rose-600";
 
   // Generate paragraph & field for each problem part
   const partSet = obb.map((part, i) => (
@@ -61,7 +51,7 @@ function Problem({ num, qcontent, ans, obb }) {
           onChange={(event) => handleChange(event, i)}
           className="bg-gray-900 px-1 py-1"
           autoComplete="off"
-          disabled={bStat}
+          disabled={bStat[i]}
         ></input>
         <h3 className="pl-3 pb-1">m/s</h3>
       </div>
@@ -81,19 +71,9 @@ function Problem({ num, qcontent, ans, obb }) {
         <h1 className="font-xl justify-end px-5 text-2xl font-bold">{num}</h1>
       </header>
       <div className="grid-cols-1 p-5">
-        {/* <p>{obb.question}</p>
-        <br /> */}
         <form onSubmit={handleSubmit}>
-          {/* <input
-            name="answer"
-            onChange={handleChange}
-            className="bg-gray-900 px-1 py-1"
-            autoComplete="off"
-            disabled={bStat}
-          ></input>
-          <br /> */}
           {partSet}
-          {!bStat && (
+          {!aStat && (
             <button
               type="submit"
               className="mt-4 rounded bg-indigo-600 py-1 px-3 text-xs hover:bg-indigo-500"
