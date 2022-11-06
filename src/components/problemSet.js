@@ -39,22 +39,14 @@ function ProblemSet() {
     return <QuestionLoader />;
   }
 
-  // Prints the answer to the first part of the first problem:
-  // console.log(data[0].problems[0].answer);
-
-  const problems = data.map((datum, i) => {
-    const answers = data[i].problems.map((problem) => {
-      return String(problem.answer);
-    });
-
+  const problems = data.map((data, i) => {
     return (
       <Problem
         num={i}
-        qcontent={datum.question}
-        ans={answers}
-        units={datum.units}
+        qcontent={data.question}
+        ans={data.answer}
+        units={data.units}
         key={i}
-        obb={datum.problems}
       />
     );
   });
