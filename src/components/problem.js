@@ -17,14 +17,10 @@ function Problem({ num, qcontent, ans, obb }) {
   // Submit handler UNCOMMENT THIS -------<>--------
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (formData === ans) {
+    if (formData.toString() === ans.toString()) {
       setbStat(true);
-      alert("Correct Answers");
     } else {
       setbStat(false);
-      alert(
-        `Wrong Answers (or code)\n Your answer: ${formData}\n Correct answer: ${ans}`
-      );
     }
   };
 
@@ -37,7 +33,6 @@ function Problem({ num, qcontent, ans, obb }) {
 
   const handleChange = (event, index) => {
     console.log("CHANGING LALALALALALALALALALALALALALA");
-    let d = 1;
     const newData = formData.map((c, i) => {
       if (i === index) {
         return event.target.value;
@@ -45,7 +40,6 @@ function Problem({ num, qcontent, ans, obb }) {
         return c;
       }
     });
-    console.log(d);
     console.log(newData);
     setFormData(newData);
   };

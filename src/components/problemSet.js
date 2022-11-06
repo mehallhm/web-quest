@@ -44,7 +44,7 @@ function ProblemSet() {
 
   const problems = data.map((datum, i) => {
     const answers = data[i].problems.map((problem) => {
-      return problem.answer;
+      return String(problem.answer);
     });
 
     return (
