@@ -47,7 +47,7 @@ function Problem({ num, qcontent, ans, obb }) {
         <input
           name="answer"
           onChange={(event) => handleChange(event, i)}
-          className={`rounded-md border-4 bg-gray-900 px-1 py-1 ${
+          className={`rounded-md border-4 bg-gray-900 px-1 py-1 outline-none ${
             bStat[i] ? "border-green-500" : "border-red-500"
           }`}
           autoComplete="off"
