@@ -2,18 +2,19 @@ import React, { useState, useReducer } from "react";
 import "../index.css";
 
 // Form handler
-const formReduce = (state, event) => {
-  return {
-    ...state,
-    [event.name]: event.value,
-  };
-};
+// const formReduce = (state, event) => {
+//   return {
+//     ...state,
+//     [event.name]: event.value,
+//   };
+// };
 
 function Problem({ num, qcontent, ans, obb }) {
   const [bStat, setbStat] = useState(null);
-  const [formData, setFormData] = useReducer(formReduce, {});
+  // const [formData, setFormData] = useReducer(formReduce, {});
+  const [formData, setFormData] = useState(Array(obb.length).fill(null));
 
-  // Submit handler
+  // Submit handler UNCOMMENT THIS -------<>--------
   const handleSubmit = (event) => {
     event.preventDefault();
     if (Object.values(formData)[0] === String(ans)) {
@@ -23,11 +24,22 @@ function Problem({ num, qcontent, ans, obb }) {
     }
   };
 
-  const handleChange = (event) => {
-    setFormData({
-      name: event.target.name,
-      value: event.target.value,
+  // const handleChange = (event) => {
+  //   setFormData({
+  //     name: event.target.name,
+  //     value: event.target.value,
+  //   });
+  // };
+
+  const handleChange = (event, index) => {
+    const newData = formData.map((c, i) => {
+      if (i === index) {
+        return event.target.value;
+      } else {
+        return c;
+      }
     });
+    setFormData(newData);
   };
 
   // Conditional coloring
