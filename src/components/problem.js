@@ -29,7 +29,7 @@ function Problem({ num, qcontent, ans, obb }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (formData.toString() === ans.toString()) {
-      setaStat();
+      setaStat(true);
     } else {
       const newValid = formData.map((datum, i) => {
         return datum === ans[i];
@@ -107,7 +107,7 @@ function Problem({ num, qcontent, ans, obb }) {
           ></input>
           <br /> */}
           {partSet}
-          {!bStat && (
+          {!aStat && (
             <button
               type="submit"
               className="mt-4 rounded bg-indigo-600 py-1 px-3 text-xs hover:bg-indigo-500"
