@@ -17,10 +17,12 @@ function Problem({ num, qcontent, ans, obb }) {
   // Submit handler UNCOMMENT THIS -------<>--------
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (Object.values(formData)[0] === String(ans)) {
+    if (formData === String(ans)) {
       setbStat(true);
+      alert("Correct Answers");
     } else {
       setbStat(false);
+      alert("Wrong Answers (or code)");
     }
   };
 
@@ -78,7 +80,6 @@ function Problem({ num, qcontent, ans, obb }) {
         </div>
         <h1 className="font-xl justify-end px-5 text-2xl font-bold">{num}</h1>
       </header>
-
       <div className="grid-cols-1 p-5">
         {/* <p>{obb.question}</p>
         <br /> */}
