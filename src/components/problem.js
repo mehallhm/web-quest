@@ -60,9 +60,9 @@ function Problem({ num, qcontent, ans, obb }) {
 
   // Conditional coloring
   const pCol =
-    aStat == null ? "bg-teal-500" : bStat ? "bg-green-500" : "bg-rose-500";
+    aStat == null ? "bg-teal-500" : aStat ? "bg-green-500" : "bg-rose-500";
   const sCol =
-    aStat == null ? "bg-teal-600" : bStat ? "bg-green-600" : "bg-rose-600";
+    aStat == null ? "bg-teal-600" : aStat ? "bg-green-600" : "bg-rose-600";
 
   // Generate paragraph & field for each problem part
   const partSet = obb.map((part, i) => (
