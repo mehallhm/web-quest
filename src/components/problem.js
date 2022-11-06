@@ -1,13 +1,5 @@
-import React, { useState /*, useReducer*/ } from "react";
+import React, { useState } from "react";
 import "../index.css";
-
-// Form handler
-// const formReduce = (state, event) => {
-//   return {
-//     ...state,
-//     [event.name]: event.value,
-//   };
-// };
 
 function Problem({ num, qcontent, ans, obb }) {
   // Individual part validation
@@ -17,15 +9,6 @@ function Problem({ num, qcontent, ans, obb }) {
   // const [formData, setFormData] = useReducer(formReduce, {});
   const [formData, setFormData] = useState(Array(obb.length).fill(null));
 
-  // Submit handler UNCOMMENT THIS -------<>--------
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   if (formData.toString() === ans.toString()) {
-  //     setbStat(true);
-  //   } else {
-  //     setbStat(false);
-  //   }
-  // };
   const handleSubmit = (event) => {
     event.preventDefault();
     if (formData.toString() === ans.toString()) {
@@ -37,13 +20,6 @@ function Problem({ num, qcontent, ans, obb }) {
       setbStat(newValid);
     }
   };
-
-  // const handleChange = (event) => {
-  //   setFormData({
-  //     name: event.target.name,
-  //     value: event.target.value,
-  //   });
-  // };
 
   const handleChange = (event, index) => {
     console.log("CHANGING LALALALALALALALALALALALALALA");
@@ -95,17 +71,7 @@ function Problem({ num, qcontent, ans, obb }) {
         <h1 className="font-xl justify-end px-5 text-2xl font-bold">{num}</h1>
       </header>
       <div className="grid-cols-1 p-5">
-        {/* <p>{obb.question}</p>
-        <br /> */}
         <form onSubmit={handleSubmit}>
-          {/* <input
-            name="answer"
-            onChange={handleChange}
-            className="bg-gray-900 px-1 py-1"
-            autoComplete="off"
-            disabled={bStat}
-          ></input>
-          <br /> */}
           {partSet}
           {!aStat && (
             <button
