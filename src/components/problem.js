@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../index.css";
 
-function Problem({ num, qcontent, ans, obb }) {
+function Problem({ num, ans, obb, units }) {
   // Individual part validation
   const [bStat, setbStat] = useState(Array(obb.length).fill(null));
   // Whole problem validation
@@ -53,7 +53,7 @@ function Problem({ num, qcontent, ans, obb }) {
           autoComplete="off"
           disabled={bStat[i]}
         ></input>
-        <h3 className="pl-3 pb-1">m/s</h3>
+        <h3 className="pl-3 pb-1">{units[i]}</h3>
       </div>
     </div>
   ));

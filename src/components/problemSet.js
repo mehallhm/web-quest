@@ -47,12 +47,15 @@ function ProblemSet() {
       return String(problem.answer);
     });
 
+    const units = data[i].problems.map((problem) => {
+      return problem.units;
+    });
+
     return (
       <Problem
         num={i}
-        qcontent={datum.question}
         ans={answers}
-        units={datum.units}
+        units={units}
         key={i}
         obb={datum.problems}
       />
