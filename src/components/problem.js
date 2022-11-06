@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from "react";
+import React, { useState /*, useReducer*/ } from "react";
 import "../index.css";
 
 // Form handler
