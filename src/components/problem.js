@@ -17,12 +17,14 @@ function Problem({ num, qcontent, ans, obb }) {
   // Submit handler UNCOMMENT THIS -------<>--------
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (formData === String(ans)) {
+    if (formData === ans) {
       setbStat(true);
       alert("Correct Answers");
     } else {
       setbStat(false);
-      alert("Wrong Answers (or code)");
+      alert(
+        `Wrong Answers (or code)\n Your answer: ${formData}\n Correct answer: ${ans}`
+      );
     }
   };
 
@@ -34,6 +36,8 @@ function Problem({ num, qcontent, ans, obb }) {
   // };
 
   const handleChange = (event, index) => {
+    console.log("CHANGING LALALALALALALALALALALALALALA");
+    let d = 1;
     const newData = formData.map((c, i) => {
       if (i === index) {
         return event.target.value;
@@ -41,6 +45,8 @@ function Problem({ num, qcontent, ans, obb }) {
         return c;
       }
     });
+    console.log(d);
+    console.log(newData);
     setFormData(newData);
   };
 
@@ -51,14 +57,14 @@ function Problem({ num, qcontent, ans, obb }) {
     bStat == null ? "bg-teal-600" : bStat ? "bg-green-600" : "bg-rose-600";
 
   // Generate paragraph & field for each problem part
-  const partSet = obb.map((part) => (
+  const partSet = obb.map((part, i) => (
     <div className="pb-8">
       <p>{part.question}</p>
       <br />
       <div className="flex items-center">
         <input
           name="answer"
-          onChange={handleChange}
+          onChange={(event) => handleChange(event, i)}
           className="bg-gray-900 px-1 py-1"
           autoComplete="off"
           disabled={bStat}
