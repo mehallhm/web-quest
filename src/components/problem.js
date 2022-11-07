@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../index.css";
 
 function Problem({ num, ans, obb, units }) {
@@ -15,13 +15,17 @@ function Problem({ num, ans, obb, units }) {
     event.preventDefault();
     if (formData.toString() === ans.toString()) {
       setaStat(true);
-    } else {
-      const newValid = formData.map((datum, i) => {
-        return datum === ans[i];
-      });
-      setbStat(newValid);
     }
+    const newValid = formData.map((datum, i) => {
+      return datum === ans[i];
+    });
+    setbStat(newValid);
+
+    console.log("Before bstat: " + bStat);
+    console.log("formdata: " + formData);
     setPoints(bStat.filter((c) => c === true).length);
+    console.log("After bstat: " + bStat);
+    console.log("pts: " + points);
   };
 
   const handleChange = (event, index) => {
@@ -62,7 +66,7 @@ function Problem({ num, ans, obb, units }) {
   ));
 
   return (
-    <div className="Problem mt-10 rounded-b bg-slate-800">
+    <div className="Problem mt-10 rounded bg-slate-800">
       <header className={`flex items-center justify-between rounded-t ${pCol}`}>
         {/*${"bg-" + cCol + "-600"} -----------------------> ^^^*/}
         <div className="flex flex-row items-center">
