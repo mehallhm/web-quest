@@ -43,6 +43,7 @@ function ProblemSet() {
   // console.log(data[0].problems[0].answer);
 
   const problems = data.map((datum, i) => {
+    // Check this: should pull problem ans
     const answers = data[i].problems.map((problem) => {
       return String(problem.answer);
     });

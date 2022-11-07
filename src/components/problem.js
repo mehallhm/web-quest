@@ -13,19 +13,26 @@ function Problem({ num, ans, obb, units }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (formData.toString() === ans.toString()) {
-      setaStat(true);
-    }
+    // if (formData.toString() === ans.toString()) {
+    //   setaStat(true);
+    // }
     const newValid = formData.map((datum, i) => {
       return datum === ans[i];
     });
     setbStat(newValid);
+    if (
+      bStat.every((c) => {
+        return c === true;
+      })
+    ) {
+      setaStat(true);
+    }
 
-    console.log("Before bstat: " + bStat);
-    console.log("formdata: " + formData);
+    // console.log("Before bstat: " + bStat);
+    // console.log("formdata: " + formData);
     setPoints(bStat.filter((c) => c === true).length);
-    console.log("After bstat: " + bStat);
-    console.log("pts: " + points);
+    // console.log("After bstat: " + bStat);
+    // console.log("pts: " + points);
   };
 
   const handleChange = (event, index) => {
