@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import QuestionLoader from "./questionLoader";
+import Problem from "./problem";
+import { app } from "../public/firebase.js";
 import {
 	getFirestore,
 	collection,
@@ -6,11 +9,10 @@ import {
 	query,
 	where,
 } from "firebase/firestore";
-import QuestionLoader from "./questionLoader";
-import Problem from "./problem";
-import { db } from "../public/firebase";
 
-const q = query(collection(db, "questions"), where("tag", "==", "physics"));
+const db = getFirestore(app);
+
+const q = query(collection(db, "problems"), where("tag", "==", "physics"));
 
 const getData = async () => {
 	let result = [];

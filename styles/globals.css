@@ -3,7 +3,19 @@
 @tailwind utilities;
 
 body {
-  background-color: rgb(50, 50, 50);
-  color: white;
-  font-family: monospace;
+	background-color: rgb(50, 50, 50);
+	color: white;
+	font-family: monospace;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+	-moz-appearance: textfield;
 }
